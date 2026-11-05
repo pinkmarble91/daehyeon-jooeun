@@ -233,59 +233,6 @@ href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%EA%B9%80
 </div>
 </div>
 </section>
-<section aria-labelledby="t-acc">
-<p class="eyebrow">With Heart</p>
-<h2 id="t-acc">마음 전하실 곳</h2>
-<p class="acc-intro">참석이 어려우신 분들을 위해 계좌번호를 안내드립니다.<br>너그러운 마음으로 양해 부탁드립니다.</p>
-<div class="acc" id="accGroom">
-<button aria-expanded="false" aria-controls="accGroomBody"><span>신랑측 계좌번호</span><span class="chev" aria-hidden="true">⌄</span></button>
-<div class="acc-body" id="accGroomBody" hidden>
-<div class="acc-row"><div><small>신랑 김대현 · 국민은행</small><span>123456-01-234567</span></div><button data-copy="국민은행 123456-01-234567 김대현">복사</button></div>
-<div class="acc-row"><div><small>아버지 김정호 · 신한은행</small><span>110-234-567890</span></div><button data-copy="신한은행 110-234-567890 김정호">복사</button></div>
-<div class="acc-row"><div><small>어머니 박은영 · 우리은행</small><span>1002-345-678901</span></div><button data-copy="우리은행 1002-345-678901 박은영">복사</button></div>
-</div>
-</div>
-<div class="acc" id="accBride">
-<button aria-expanded="false" aria-controls="accBrideBody"><span>신부측 계좌번호</span><span class="chev" aria-hidden="true">⌄</span></button>
-<div class="acc-body" id="accBrideBody" hidden>
-<div class="acc-row"><div><small>신부 김주은 · 카카오뱅크</small><span>3333-01-2345678</span></div><button data-copy="카카오뱅크 3333-01-2345678 김주은">복사</button></div>
-<div class="acc-row"><div><small>아버지 김상철 · 하나은행</small><span>123-456789-01234</span></div><button data-copy="하나은행 123-456789-01234 김상철">복사</button></div>
-<div class="acc-row"><div><small>어머니 최미경 · 농협은행</small><span>302-1234-5678-91</span></div><button data-copy="농협은행 302-1234-5678-91 최미경">복사</button></div>
-</div>
-</div>
-</section>
-<section aria-labelledby="t-rsvp">
-<p class="eyebrow">R.S.V.P.</p>
-<h2 id="t-rsvp">참석 의사 전달</h2>
-<p class="acc-intro" style="margin-bottom:8px">원활한 식사 준비를 위해<br>1월 16일까지 알려주시면 감사하겠습니다.</p>
-<form class="rsvp-form" id="rsvp" novalidate>
-<fieldset class="field">
-<legend>구분</legend>
-<div class="seg">
-<input type="radio" name="side" id="sideG" value="신랑측" checked><label for="sideG">신랑측</label>
-<input type="radio" name="side" id="sideB" value="신부측"><label for="sideB">신부측</label>
-</div>
-</fieldset>
-<fieldset class="field">
-<legend>참석 여부</legend>
-<div class="seg">
-<input type="radio" name="attend" id="attY" value="참석" checked><label for="attY">참석할게요</label>
-<input type="radio" name="attend" id="attN" value="불참"><label for="attN">어려워요</label>
-</div>
-</fieldset>
-<div class="field">
-<label for="rName">성함</label>
-<input type="text" id="rName" placeholder="예) 홍길동" autocomplete="name">
-</div>
-<div class="field" id="countField">
-<label for="rCount">동행 인원 (본인 포함)</label>
-<select id="rCount"><option>1명</option><option>2명</option><option>3명</option><option>4명 이상</option></select>
-</div>
-<p class="err" id="rErr" hidden>성함을 입력해 주세요.</p>
-<button class="submit" type="submit">참석 의사 보내기</button>
-<p class="rsvp-done" id="rDone" hidden></p>
-</form>
-</section>
 <section class="end" aria-label="맺음말">
 <p class="thanks">함께해 주시는 모든 분께<br>감사의 마음을 전합니다.</p>
 <button class="share" id="shareBtn">청첩장 링크 복사</button>
@@ -332,16 +279,6 @@ $('#lb').addEventListener('click',e=>{ if(e.target.id==='lb') closeLb(); });
 document.addEventListener('keydown',e=>{ if($('#lb').hidden) return; if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') show(cur-1); if(e.key==='ArrowRight') show(cur+1); });
 let sx=null; $('#lb').addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
 $('#lb').addEventListener('touchend',e=>{ if(sx===null) return; const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) show(cur+(dx<0?1:-1)); sx=null; });
-document.querySelectorAll('input[name=attend]').forEach(r=>r.addEventListener('change',()=>{ $('#countField').hidden=$('#attN').checked; }));
-$('#rsvp').addEventListener('submit',e=>{
-e.preventDefault();
-const name=$('#rName').value.trim();
-if(!name){ $('#rErr').hidden=false; $('#rName').focus(); return; }
-$('#rErr').hidden=true;
-const side=document.querySelector('input[name=side]:checked').value, att=document.querySelector('input[name=attend]:checked').value;
-$('#rDone').textContent = name+'님 ('+side+', '+att+(att==='참석'?' · '+$('#rCount').value:'')+') — 샘플 화면이라 응답은 저장되지 않아요.';
-$('#rDone').hidden=false;
-});
 const cv=$('#petals'); if(!cv) return; const ctx=cv.getContext('2d');
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let W,H,ps=[];
