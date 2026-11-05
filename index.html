@@ -158,11 +158,7 @@ fieldset{border:0;margin:0;padding:0}
 <div class="parents">
 <p><span class="rel">신랑</span><b>김대현</b><span class="rel" style="margin:0 10px">·</span><span class="rel">신부</span><b>김주은</b></p>
 </div>
-<button class="contact-btn" id="contactToggle" aria-expanded="false" aria-controls="contacts">연락처 보기</button>
-<div class="contacts" id="contacts" hidden>
-<div class="c-row"><span><small>신랑</small>김대현</span><a href="tel:01064396079">010-6439-6079</a></div>
-<div class="c-row"><span><small>신부</small>김주은</span><a href="tel:01025922386">010-2592-2386</a></div>
-</div>
+
 </section>
 <section aria-labelledby="t-date">
 <p class="eyebrow">Wedding Day</p>
@@ -171,13 +167,7 @@ fieldset{border:0;margin:0;padding:0}
 <div class="cal-head">1월</div>
 <div class="cal-grid" id="calGrid"></div>
 </div>
-<div class="dday" aria-live="off">
-<div><strong id="dd">0</strong><small>DAYS</small></div>
-<div><strong id="dh">0</strong><small>HOUR</small></div>
-<div><strong id="dm">0</strong><small>MIN</small></div>
-<div><strong id="ds">0</strong><small>SEC</small></div>
-</div>
-<p class="dday-msg" id="ddayMsg">대현 ♥ 주은의 결혼식이 <b>0일</b> 남았습니다</p>
+
 <a class="cal-add" target="_blank" rel="noopener"
 href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%EA%B9%80%EB%8C%80%ED%98%84%20%E2%99%A5%20%EA%B9%80%EC%A3%BC%EC%9D%80%20%EA%B2%B0%ED%98%BC%EC%8B%9D&dates=20270130T023000Z/20270130T043000Z&location=%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20581%20%ED%91%B8%EB%A5%B8%EB%B9%8C%EB%94%A9%20%ED%8E%98%ED%8E%98%EC%8B%A0%EC%82%AC">구글 캘린더에 일정 추가</a>
 </section>
@@ -322,21 +312,12 @@ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.wr
 }
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.copy, b.classList.contains('copy-inline')?'주소를 복사했어요':'계좌번호를 복사했어요')));
 $('#shareBtn').addEventListener('click',()=>copy(location.href.split('#')[0],'링크를 복사했어요'));
-$('#contactToggle').addEventListener('click',e=>{ const c=$('#contacts'); c.hidden=!c.hidden; e.currentTarget.setAttribute('aria-expanded',String(!c.hidden)); e.currentTarget.textContent=c.hidden?'연락처 보기':'연락처 닫기'; });
 document.querySelectorAll('.acc > button').forEach(b=>b.addEventListener('click',()=>{ const acc=b.parentElement, body=acc.querySelector('.acc-body'); body.hidden=!body.hidden; b.setAttribute('aria-expanded',String(!body.hidden)); body.hidden?acc.removeAttribute('data-open'):acc.setAttribute('data-open',''); }));
 const g=$('#calGrid'); const dows=['일','월','화','수','목','금','토'];
 dows.forEach((d,i)=>{ const e=document.createElement('div'); e.className='dow'+(i===0?' sun':''); e.textContent=d; g.appendChild(e); });
 const first=new Date(2027,0,1).getDay();
 for(let i=0;i<first;i++) g.appendChild(document.createElement('div'));
 for(let d=1; d<=31; d++){ const e=document.createElement('div'); const wd=(first+d-1)%7; if(d===30){ e.className='day-on'; e.innerHTML='<span>30</span>'; e.setAttribute('aria-label','1월 30일 예식일'); } else { e.textContent=d; if(wd===0) e.className='sun'; } g.appendChild(e); }
-const target=Date.UTC(2027,0,30,2,30);
-function tick(){
-let diff=target-Date.now(); const past=diff<0; diff=Math.abs(diff);
-const d=Math.floor(diff/864e5), h=Math.floor(diff/36e5)%24, m=Math.floor(diff/6e4)%60, s=Math.floor(diff/1e3)%60;
-$('#dd').textContent=d; $('#dh').textContent=String(h).padStart(2,'0'); $('#dm').textContent=String(m).padStart(2,'0'); $('#ds').textContent=String(s).padStart(2,'0');
-$('#ddayMsg').innerHTML= past ? '대현 ♥ 주은이 부부가 된 지 <b>'+d+'일</b>째입니다' : '대현 ♥ 주은의 결혼식이 <b>'+d+'일</b> 남았습니다';
-}
-tick(); setInterval(tick,1000);
 const tones=[['#DCE5D8','#B9CBB6'],['#EFE4EC','#D7C1D0'],['#E4E8EE','#C5CED9'],['#F1ECE2','#DCD2BF'],['#DDE6E3','#B4C9C3'],['#EDE6EA','#CFC0C9'],['#E6ECE0','#C7D3BC'],['#E9E5EF','#CBC3D8'],['#E3EAE6','#BFCFC6']];
 const gal=$('#gallery');
 tones.forEach((t,i)=>{ const b=document.createElement('button'); b.style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; b.innerHTML='<span>사진 '+(i+1)+'</span>'; b.setAttribute('aria-label','사진 '+(i+1)+' 크게 보기'); b.addEventListener('click',()=>openLb(i)); gal.appendChild(b); });
