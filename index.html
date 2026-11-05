@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="2027년 1월 30일 토요일 오전 11시 30분, 페페신사">
 <meta property="og:type" content="website">
 <meta property="og:title" content="김대현 ♥ 김주은 결혼합니다">
@@ -31,6 +31,12 @@ color-scheme:light;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+/* 사진 확대 막기 */
+html{touch-action:pan-x pan-y}
+img,.arch,.gallery button,.map image{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.arch img{pointer-events:none}
+.gallery button{cursor:default}
+
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
 .wrap{max-width:440px;margin:0 auto;background:var(--card);min-height:100%;box-shadow:0 0 0 1px var(--line)}
 section{padding-block:56px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));text-align:center}
@@ -143,7 +149,7 @@ fieldset{border:0;margin:0;padding:0}
 <div class="wrap">
 <section class="hero" aria-label="표지">
 <p class="date-latin">2027 . 01 . 30</p>
-<div class="arch"><img src="hero.jpg" alt="김대현과 김주은의 사진"></div>
+<div class="arch"><img draggable="false" src="hero.jpg" alt="김대현과 김주은의 사진"></div>
 <div class="names"><span>김대현</span><span class="amp">&amp;</span><span>김주은</span></div>
 <p class="when">2027년 1월 30일 토요일 오전 11시 30분<br>페페신사</p>
 </section>
@@ -172,7 +178,6 @@ fieldset{border:0;margin:0;padding:0}
 <p class="eyebrow">Gallery</p>
 <h2 id="t-gallery">갤러리</h2>
 <div class="gallery" id="gallery"></div>
-<p class="g-note">사진을 누르면 크게 볼 수 있어요</p>
 </section>
 <section aria-labelledby="t-loc">
 <p class="eyebrow">Location</p>
@@ -264,7 +269,7 @@ for(let i=0;i<first;i++) g.appendChild(document.createElement('div'));
 for(let d=1; d<=31; d++){ const e=document.createElement('div'); const wd=(first+d-1)%7; if(d===30){ e.className='day-on'; e.innerHTML='<span>30</span>'; e.setAttribute('aria-label','1월 30일 예식일'); } else { e.textContent=d; if(wd===0) e.className='sun'; } g.appendChild(e); }
 const tones=[['#DCE5D8','#B9CBB6'],['#EFE4EC','#D7C1D0'],['#E4E8EE','#C5CED9'],['#F1ECE2','#DCD2BF'],['#DDE6E3','#B4C9C3'],['#EDE6EA','#CFC0C9']];
 const gal=$('#gallery');
-tones.forEach((t,i)=>{ const b=document.createElement('button'); b.style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; b.innerHTML='<span>사진 '+(i+1)+'</span>'; b.setAttribute('aria-label','사진 '+(i+1)+' 크게 보기'); b.addEventListener('click',()=>openLb(i)); gal.appendChild(b); });
+tones.forEach((t,i)=>{ const b=document.createElement('button'); b.style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; b.innerHTML='<span>사진 '+(i+1)+'</span>'; b.setAttribute('aria-label','사진 '+(i+1)); b.tabIndex=-1; gal.appendChild(b); });
 let cur=0;
 function show(i){ cur=(i+tones.length)%tones.length; const t=tones[cur]; $('#lbFrame').style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; $('#lbFrame').textContent='사진 '+(cur+1); $('#lbCount').textContent=(cur+1)+' / '+tones.length; }
 function openLb(i){ show(i); $('#lb').hidden=false; $('#lbClose').focus(); }
