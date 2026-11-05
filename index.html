@@ -167,9 +167,6 @@ fieldset{border:0;margin:0;padding:0}
 <div class="cal-head">1월</div>
 <div class="cal-grid" id="calGrid"></div>
 </div>
-
-<a class="cal-add" target="_blank" rel="noopener"
-href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%EA%B9%80%EB%8C%80%ED%98%84%20%E2%99%A5%20%EA%B9%80%EC%A3%BC%EC%9D%80%20%EA%B2%B0%ED%98%BC%EC%8B%9D&dates=20270130T023000Z/20270130T043000Z&location=%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20581%20%ED%91%B8%EB%A5%B8%EB%B9%8C%EB%94%A9%20%ED%8E%98%ED%8E%98%EC%8B%A0%EC%82%AC">구글 캘린더에 일정 추가</a>
 </section>
 <section aria-labelledby="t-gallery">
 <p class="eyebrow">Gallery</p>
@@ -242,7 +239,7 @@ href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%EA%B9%80
 <div class="lightbox" id="lb" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
 <button class="close" id="lbClose">닫기 ✕</button>
 <div class="frame" id="lbFrame"></div>
-<div class="nav"><button id="lbPrev" aria-label="이전 사진">‹</button><span id="lbCount">1 / 9</span><button id="lbNext" aria-label="다음 사진">›</button></div>
+<div class="nav"><button id="lbPrev" aria-label="이전 사진">‹</button><span id="lbCount">1 / 6</span><button id="lbNext" aria-label="다음 사진">›</button></div>
 </div>
 <button class="note-btn" id="noteBtn" aria-pressed="false" aria-label="음악 재생"><span aria-hidden="true">♪</span></button>
 <a class="note-btn" id="noteLink" href="https://youtu.be/LE5gv7g28Zg" target="_blank" rel="noopener" aria-label="유튜브에서 노래 듣기" hidden><span aria-hidden="true">♪</span></a>
@@ -265,7 +262,7 @@ dows.forEach((d,i)=>{ const e=document.createElement('div'); e.className='dow'+(
 const first=new Date(2027,0,1).getDay();
 for(let i=0;i<first;i++) g.appendChild(document.createElement('div'));
 for(let d=1; d<=31; d++){ const e=document.createElement('div'); const wd=(first+d-1)%7; if(d===30){ e.className='day-on'; e.innerHTML='<span>30</span>'; e.setAttribute('aria-label','1월 30일 예식일'); } else { e.textContent=d; if(wd===0) e.className='sun'; } g.appendChild(e); }
-const tones=[['#DCE5D8','#B9CBB6'],['#EFE4EC','#D7C1D0'],['#E4E8EE','#C5CED9'],['#F1ECE2','#DCD2BF'],['#DDE6E3','#B4C9C3'],['#EDE6EA','#CFC0C9'],['#E6ECE0','#C7D3BC'],['#E9E5EF','#CBC3D8'],['#E3EAE6','#BFCFC6']];
+const tones=[['#DCE5D8','#B9CBB6'],['#EFE4EC','#D7C1D0'],['#E4E8EE','#C5CED9'],['#F1ECE2','#DCD2BF'],['#DDE6E3','#B4C9C3'],['#EDE6EA','#CFC0C9']];
 const gal=$('#gallery');
 tones.forEach((t,i)=>{ const b=document.createElement('button'); b.style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; b.innerHTML='<span>사진 '+(i+1)+'</span>'; b.setAttribute('aria-label','사진 '+(i+1)+' 크게 보기'); b.addEventListener('click',()=>openLb(i)); gal.appendChild(b); });
 let cur=0;
