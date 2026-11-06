@@ -84,7 +84,7 @@ background:radial-gradient(120% 80% at 50% 110%,#C9D6C6 0%,#DCE5D8 45%,#EEF2EC 1
 .cal-add{display:inline-block;margin-top:20px;font-size:13px;color:var(--plum);text-decoration:underline;text-underline-offset:3px}
 .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
 .gallery .g-item{grid-column:span 2;aspect-ratio:3/4;max-width:100%;border:0;padding:0;margin:0;border-radius:4px;overflow:hidden;background:var(--paper);cursor:pointer;-webkit-tap-highlight-color:transparent}
-.gallery .g-item.half{grid-column:span 3;aspect-ratio:9/8}
+.gallery .g-item.full{grid-column:1/-1;aspect-ratio:16/9}
 .gallery .g-item img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .g-note{margin-top:14px;font-size:12px;color:var(--muted)}
 .lightbox{position:fixed;inset:0;background:rgba(14,18,16,.94);z-index:50;display:grid;place-items:center;touch-action:none;overscroll-behavior:contain;-webkit-user-select:none;user-select:none}
@@ -179,7 +179,7 @@ fieldset{border:0;margin:0;padding:0}
 <section aria-labelledby="t-gallery">
 <p class="eyebrow">Gallery</p>
 <h2 id="t-gallery">갤러리</h2>
-<div class="gallery" id="gallery"><button type="button" class="g-item" data-i="0" aria-label="사진 1 크게 보기"><img draggable="false" src="gallery/g1.jpg" alt="갤러리 사진 1" loading="lazy"></button><button type="button" class="g-item" data-i="1" aria-label="사진 2 크게 보기"><img draggable="false" src="gallery/g2.jpg" alt="갤러리 사진 2" loading="lazy"></button><button type="button" class="g-item" data-i="2" aria-label="사진 3 크게 보기"><img draggable="false" src="gallery/g3.jpg" alt="갤러리 사진 3" loading="lazy"></button><button type="button" class="g-item" data-i="3" aria-label="사진 4 크게 보기"><img draggable="false" src="gallery/g4.jpg" alt="갤러리 사진 4" loading="lazy"></button><button type="button" class="g-item" data-i="4" aria-label="사진 5 크게 보기"><img draggable="false" src="gallery/g5.jpg" alt="갤러리 사진 5" loading="lazy"></button><button type="button" class="g-item" data-i="5" aria-label="사진 6 크게 보기"><img draggable="false" src="gallery/g6.jpg" alt="갤러리 사진 6" loading="lazy"></button><button type="button" class="g-item half" data-i="6" aria-label="사진 7 크게 보기"><img draggable="false" src="gallery/g7.jpg" alt="갤러리 사진 7" loading="lazy"></button><button type="button" class="g-item half" data-i="7" aria-label="사진 8 크게 보기"><img draggable="false" src="gallery/g8.jpg" alt="갤러리 사진 8" loading="lazy"></button></div>
+<div class="gallery" id="gallery"><button type="button" class="g-item" data-i="0" aria-label="사진 1 크게 보기"><img draggable="false" src="gallery/g1.jpg" alt="갤러리 사진 1" loading="lazy"></button><button type="button" class="g-item" data-i="1" aria-label="사진 2 크게 보기"><img draggable="false" src="gallery/g2.jpg" alt="갤러리 사진 2" loading="lazy"></button><button type="button" class="g-item" data-i="2" aria-label="사진 3 크게 보기"><img draggable="false" src="gallery/g3.jpg" alt="갤러리 사진 3" loading="lazy"></button><button type="button" class="g-item" data-i="3" aria-label="사진 4 크게 보기"><img draggable="false" src="gallery/g4.jpg" alt="갤러리 사진 4" loading="lazy"></button><button type="button" class="g-item" data-i="4" aria-label="사진 5 크게 보기"><img draggable="false" src="gallery/g5.jpg" alt="갤러리 사진 5" loading="lazy"></button><button type="button" class="g-item" data-i="5" aria-label="사진 6 크게 보기"><img draggable="false" src="gallery/g6.jpg" alt="갤러리 사진 6" loading="lazy"></button><button type="button" class="g-item full" data-i="6" aria-label="사진 7 크게 보기"><img draggable="false" src="gallery/g7.jpg" alt="갤러리 사진 7" loading="lazy"></button></div>
 </section>
 <section aria-labelledby="t-loc">
 <p class="eyebrow">Location</p>
@@ -241,7 +241,7 @@ fieldset{border:0;margin:0;padding:0}
 <div class="lightbox" id="lb" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
 <button class="close" id="lbClose">닫기 ✕</button>
 <img class="lb-img" id="lbImg" alt="" draggable="false">
-<div class="nav"><button id="lbPrev" aria-label="이전 사진">‹</button><span id="lbCount">1 / 8</span><button id="lbNext" aria-label="다음 사진">›</button></div>
+<div class="nav"><button id="lbPrev" aria-label="이전 사진">‹</button><span id="lbCount">1 / 7</span><button id="lbNext" aria-label="다음 사진">›</button></div>
 </div>
 <button class="note-btn" id="noteBtn" aria-pressed="false" aria-label="음악 재생"><span aria-hidden="true">♪</span></button>
 <a class="note-btn" id="noteLink" href="https://youtu.be/LE5gv7g28Zg" target="_blank" rel="noopener" aria-label="유튜브에서 노래 듣기" hidden><span aria-hidden="true">♪</span></a>
