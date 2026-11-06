@@ -84,6 +84,8 @@ background:radial-gradient(120% 80% at 50% 110%,#C9D6C6 0%,#DCE5D8 45%,#EEF2EC 1
 .dday-msg b{color:var(--plum);font-weight:400}
 .cal-add{display:inline-block;margin-top:20px;font-size:13px;color:var(--plum);text-decoration:underline;text-underline-offset:3px}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.gallery .g-item{aspect-ratio:3/4;max-width:100%;border-radius:4px;overflow:hidden;background:var(--paper)}
+.gallery .g-item img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .gallery button{border:0;padding:0;aspect-ratio:3/4;border-radius:4px;position:relative;overflow:hidden}
 .gallery button span{position:absolute;inset:auto 0 6px;font-size:11px;color:rgba(35,48,43,.6)}
 .g-note{margin-top:14px;font-size:12px;color:var(--muted)}
@@ -178,7 +180,7 @@ fieldset{border:0;margin:0;padding:0}
 <section aria-labelledby="t-gallery">
 <p class="eyebrow">Gallery</p>
 <h2 id="t-gallery">갤러리</h2>
-<div class="gallery" id="gallery"></div>
+<div class="gallery" id="gallery"><div class="g-item"><img draggable="false" src="gallery/g1.jpg" alt="갤러리 사진 1" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g2.jpg" alt="갤러리 사진 2" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g3.jpg" alt="갤러리 사진 3" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g4.jpg" alt="갤러리 사진 4" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g5.jpg" alt="갤러리 사진 5" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g6.jpg" alt="갤러리 사진 6" loading="lazy"></div></div>
 </section>
 <section aria-labelledby="t-loc">
 <p class="eyebrow">Location</p>
@@ -260,7 +262,6 @@ for(let i=0;i<first;i++) g.appendChild(document.createElement('div'));
 for(let d=1; d<=31; d++){ const e=document.createElement('div'); const wd=(first+d-1)%7; if(d===30){ e.className='day-on'; e.innerHTML='<span>30</span>'; e.setAttribute('aria-label','1월 30일 예식일'); } else { e.textContent=d; if(wd===0) e.className='sun'; } g.appendChild(e); }
 const tones=[['#DCE5D8','#B9CBB6'],['#EFE4EC','#D7C1D0'],['#E4E8EE','#C5CED9'],['#F1ECE2','#DCD2BF'],['#DDE6E3','#B4C9C3'],['#EDE6EA','#CFC0C9']];
 const gal=$('#gallery');
-tones.forEach((t,i)=>{ const b=document.createElement('button'); b.style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; b.innerHTML='<span>사진 '+(i+1)+'</span>'; b.setAttribute('aria-label','사진 '+(i+1)); b.tabIndex=-1; gal.appendChild(b); });
 let cur=0;
 function show(i){ cur=(i+tones.length)%tones.length; const t=tones[cur]; $('#lbFrame').style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; $('#lbFrame').textContent='사진 '+(cur+1); $('#lbCount').textContent=(cur+1)+' / '+tones.length; }
 function openLb(i){ show(i); $('#lb').hidden=false; $('#lbClose').focus(); }
