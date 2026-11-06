@@ -35,7 +35,6 @@ color-scheme:light;
 html{touch-action:pan-x pan-y}
 img,.arch,.gallery button,.map image{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
 .arch img{pointer-events:none}
-.gallery button{cursor:default}
 
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
 .wrap{max-width:440px;margin:0 auto;background:var(--card);min-height:100%;box-shadow:0 0 0 1px var(--line)}
@@ -83,19 +82,17 @@ background:radial-gradient(120% 80% at 50% 110%,#C9D6C6 0%,#DCE5D8 45%,#EEF2EC 1
 .dday-msg{margin-top:16px;font-size:14px;color:var(--muted)}
 .dday-msg b{color:var(--plum);font-weight:400}
 .cal-add{display:inline-block;margin-top:20px;font-size:13px;color:var(--plum);text-decoration:underline;text-underline-offset:3px}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
-.gallery .g-item{aspect-ratio:3/4;max-width:100%;border-radius:4px;overflow:hidden;background:var(--paper)}
-.gallery .g-item.wide{grid-column:span 2;aspect-ratio:auto;position:relative}
-.gallery .g-item.wide img{position:absolute;inset:0}
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.gallery .g-item{grid-column:span 2;aspect-ratio:3/4;max-width:100%;border:0;padding:0;margin:0;border-radius:4px;overflow:hidden;background:var(--paper);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.gallery .g-item.half{grid-column:span 3;aspect-ratio:9/8}
 .gallery .g-item img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.gallery button{border:0;padding:0;aspect-ratio:3/4;border-radius:4px;position:relative;overflow:hidden}
-.gallery button span{position:absolute;inset:auto 0 6px;font-size:11px;color:rgba(35,48,43,.6)}
 .g-note{margin-top:14px;font-size:12px;color:var(--muted)}
-.lightbox{position:fixed;inset:0;background:rgba(20,26,23,.92);z-index:50;display:grid;place-items:center;padding:max(24px,env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(24px,env(safe-area-inset-left,0px))}
-.lightbox .frame{width:min(360px,100%);aspect-ratio:3/4;border-radius:6px;display:grid;place-items:center;color:rgba(35,48,43,.7);font-size:14px}
-.lightbox .nav{position:absolute;bottom:max(28px,env(safe-area-inset-bottom,0px));display:flex;gap:16px;align-items:center;color:#fff;font-size:13px}
-.lightbox .nav button{background:rgba(255,255,255,.12);border:0;color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px}
-.lightbox .close{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));background:none;border:0;color:#fff;font-size:15px}
+.lightbox{position:fixed;inset:0;background:rgba(14,18,16,.94);z-index:50;display:grid;place-items:center;touch-action:none;overscroll-behavior:contain;-webkit-user-select:none;user-select:none}
+.lightbox .lb-img{display:block;max-width:100vw;max-height:calc(100vh - 140px);max-height:calc(100dvh - 140px);width:auto;height:auto;object-fit:contain;pointer-events:none;-webkit-touch-callout:none;-webkit-user-drag:none}
+.lightbox .nav{position:absolute;left:0;right:0;bottom:max(24px,env(safe-area-inset-bottom,0px));display:flex;justify-content:center;gap:18px;align-items:center;color:#fff;font-size:13px}
+.lightbox .nav button{background:rgba(255,255,255,.14);border:0;color:#fff;width:42px;height:42px;border-radius:50%;font-size:20px;line-height:1}
+.lightbox .close{position:absolute;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));background:none;border:0;color:#fff;font-size:15px;padding:8px}
+body.lb-open{overflow:hidden}
 .venue-name{font-family:var(--f-display);font-size:18px;font-weight:700}
 .venue-addr{margin-top:4px;color:var(--muted);font-size:14px}
 .copy-inline{margin-top:6px;border:0;background:none;color:var(--plum);font-size:13px;text-decoration:underline;text-underline-offset:3px}
@@ -182,7 +179,7 @@ fieldset{border:0;margin:0;padding:0}
 <section aria-labelledby="t-gallery">
 <p class="eyebrow">Gallery</p>
 <h2 id="t-gallery">갤러리</h2>
-<div class="gallery" id="gallery"><div class="g-item"><img draggable="false" src="gallery/g1.jpg" alt="갤러리 사진 1" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g2.jpg" alt="갤러리 사진 2" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g3.jpg" alt="갤러리 사진 3" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g4.jpg" alt="갤러리 사진 4" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g5.jpg" alt="갤러리 사진 5" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g6.jpg" alt="갤러리 사진 6" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g7.jpg" alt="갤러리 사진 7" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g8.jpg" alt="갤러리 사진 8" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g9.jpg" alt="갤러리 사진 9" loading="lazy"></div><div class="g-item wide"><img draggable="false" src="gallery/g10.jpg" alt="갤러리 사진 10" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g11.jpg" alt="갤러리 사진 11" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g12.jpg" alt="갤러리 사진 12" loading="lazy"></div><div class="g-item"><img draggable="false" src="gallery/g13.jpg" alt="갤러리 사진 13" loading="lazy"></div></div>
+<div class="gallery" id="gallery"><button type="button" class="g-item" data-i="0" aria-label="사진 1 크게 보기"><img draggable="false" src="gallery/g1.jpg" alt="갤러리 사진 1" loading="lazy"></button><button type="button" class="g-item" data-i="1" aria-label="사진 2 크게 보기"><img draggable="false" src="gallery/g2.jpg" alt="갤러리 사진 2" loading="lazy"></button><button type="button" class="g-item" data-i="2" aria-label="사진 3 크게 보기"><img draggable="false" src="gallery/g3.jpg" alt="갤러리 사진 3" loading="lazy"></button><button type="button" class="g-item" data-i="3" aria-label="사진 4 크게 보기"><img draggable="false" src="gallery/g4.jpg" alt="갤러리 사진 4" loading="lazy"></button><button type="button" class="g-item" data-i="4" aria-label="사진 5 크게 보기"><img draggable="false" src="gallery/g5.jpg" alt="갤러리 사진 5" loading="lazy"></button><button type="button" class="g-item" data-i="5" aria-label="사진 6 크게 보기"><img draggable="false" src="gallery/g6.jpg" alt="갤러리 사진 6" loading="lazy"></button><button type="button" class="g-item half" data-i="6" aria-label="사진 7 크게 보기"><img draggable="false" src="gallery/g7.jpg" alt="갤러리 사진 7" loading="lazy"></button><button type="button" class="g-item half" data-i="7" aria-label="사진 8 크게 보기"><img draggable="false" src="gallery/g8.jpg" alt="갤러리 사진 8" loading="lazy"></button></div>
 </section>
 <section aria-labelledby="t-loc">
 <p class="eyebrow">Location</p>
@@ -243,8 +240,8 @@ fieldset{border:0;margin:0;padding:0}
 </div>
 <div class="lightbox" id="lb" hidden role="dialog" aria-modal="true" aria-label="사진 크게 보기">
 <button class="close" id="lbClose">닫기 ✕</button>
-<div class="frame" id="lbFrame"></div>
-<div class="nav"><button id="lbPrev" aria-label="이전 사진">‹</button><span id="lbCount">1 / 6</span><button id="lbNext" aria-label="다음 사진">›</button></div>
+<img class="lb-img" id="lbImg" alt="" draggable="false">
+<div class="nav"><button id="lbPrev" aria-label="이전 사진">‹</button><span id="lbCount">1 / 8</span><button id="lbNext" aria-label="다음 사진">›</button></div>
 </div>
 <button class="note-btn" id="noteBtn" aria-pressed="false" aria-label="음악 재생"><span aria-hidden="true">♪</span></button>
 <a class="note-btn" id="noteLink" href="https://youtu.be/LE5gv7g28Zg" target="_blank" rel="noopener" aria-label="유튜브에서 노래 듣기" hidden><span aria-hidden="true">♪</span></a>
@@ -266,19 +263,27 @@ dows.forEach((d,i)=>{ const e=document.createElement('div'); e.className='dow'+(
 const first=new Date(2027,0,1).getDay();
 for(let i=0;i<first;i++) g.appendChild(document.createElement('div'));
 for(let d=1; d<=31; d++){ const e=document.createElement('div'); const wd=(first+d-1)%7; if(d===30){ e.className='day-on'; e.innerHTML='<span>30</span>'; e.setAttribute('aria-label','1월 30일 예식일'); } else { e.textContent=d; if(wd===0) e.className='sun'; } g.appendChild(e); }
-const tones=[['#DCE5D8','#B9CBB6'],['#EFE4EC','#D7C1D0'],['#E4E8EE','#C5CED9'],['#F1ECE2','#DCD2BF'],['#DDE6E3','#B4C9C3'],['#EDE6EA','#CFC0C9']];
-const gal=$('#gallery');
+const gal=$('#gallery'), lb=$('#lb'), lbImg=$('#lbImg');
+const N=gal.querySelectorAll('.g-item').length;
 let cur=0;
-function show(i){ cur=(i+tones.length)%tones.length; const t=tones[cur]; $('#lbFrame').style.background='linear-gradient(160deg,'+t[0]+','+t[1]+')'; $('#lbFrame').textContent='사진 '+(cur+1); $('#lbCount').textContent=(cur+1)+' / '+tones.length; }
-function openLb(i){ show(i); $('#lb').hidden=false; $('#lbClose').focus(); }
-function closeLb(){ $('#lb').hidden=true; }
+function show(i){ cur=(i+N)%N; lbImg.src='gallery/full/g'+(cur+1)+'.jpg'; lbImg.alt='갤러리 사진 '+(cur+1); $('#lbCount').textContent=(cur+1)+' / '+N; }
+function openLb(i){ show(i); lb.hidden=false; document.body.classList.add('lb-open'); }
+function closeLb(){ lb.hidden=true; document.body.classList.remove('lb-open'); }
+gal.addEventListener('click',e=>{ const b=e.target.closest('.g-item'); if(b) openLb(+b.dataset.i); });
+for(let i=1;i<=N;i++){ const im=new Image(); im.src='gallery/full/g'+i+'.jpg'; }
 $('#lbClose').addEventListener('click',closeLb);
 $('#lbPrev').addEventListener('click',()=>show(cur-1));
 $('#lbNext').addEventListener('click',()=>show(cur+1));
-$('#lb').addEventListener('click',e=>{ if(e.target.id==='lb') closeLb(); });
-document.addEventListener('keydown',e=>{ if($('#lb').hidden) return; if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') show(cur-1); if(e.key==='ArrowRight') show(cur+1); });
-let sx=null; $('#lb').addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
-$('#lb').addEventListener('touchend',e=>{ if(sx===null) return; const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) show(cur+(dx<0?1:-1)); sx=null; });
+lb.addEventListener('click',e=>{ if(e.target===lb||e.target===lbImg) closeLb(); });
+document.addEventListener('keydown',e=>{ if(lb.hidden) return; if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') show(cur-1); if(e.key==='ArrowRight') show(cur+1); });
+// 확대 방지: 핀치·더블탭·제스처 차단 (스와이프로 넘기기만 허용)
+let sx=null;
+lb.addEventListener('touchstart',e=>{ if(e.touches.length>1){ e.preventDefault(); sx=null; return; } sx=e.touches[0].clientX; },{passive:false});
+lb.addEventListener('touchmove',e=>{ e.preventDefault(); },{passive:false});
+lb.addEventListener('touchend',e=>{ if(sx===null) return; const dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)>40){ e.preventDefault(); show(cur+(dx<0?1:-1)); } },{passive:false});
+['gesturestart','gesturechange','gestureend','dblclick'].forEach(t=>lb.addEventListener(t,e=>e.preventDefault(),{passive:false}));
+lb.addEventListener('wheel',e=>{ if(e.ctrlKey) e.preventDefault(); },{passive:false});
+lb.addEventListener('contextmenu',e=>e.preventDefault());
 const cv=$('#petals'); if(!cv) return; const ctx=cv.getContext('2d');
 const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let W,H,ps=[];
